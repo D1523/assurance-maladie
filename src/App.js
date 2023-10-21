@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react"
+import data from './data';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const [assurances, setAssurances] = useState(data);
+
+
+return (
+  <main>
+    <section className='container'>
+      <h3>National Holidays Dates</h3>
+      {assurances.map((holiday) => {
+        return (
+          <div key={holiday.id} className="holiday">
+            <img src={holiday.img} />
+            <div>
+              <p>{holiday.title}</p>
+              <p>{holiday.tel}</p>
+            </div>
+          </div>
+        )
+      })}
+        <button onClick={()=> setAssurances([])}>Clear All</button>
+      </section>
+    </main>
   );
 }
 
+  
+
 export default App;
+
+
+ 
